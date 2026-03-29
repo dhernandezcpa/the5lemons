@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The 5 Lemons | Main Street M&amp;A Education Platform</title>
+  <meta name="description" content="The 5 Lemons: A CPA's Field Guide to Buying Businesses, SBA Acquisitions &amp; Main Street M&amp;A. Practitioner-written education for entrepreneurs, students, and institutions. By David &ldquo;Max&rdquo; Hernandez, CPA &mdash; The Accredited Investor CPA." />
+  <style>
+    :root {
+      --bg: #f7faff;
+      --bg-soft: #eef4ff;
+      --panel: #ffffff;
+      --panel-2: #f8fbff;
+      --text: #10233f;
+      --heading: #0a1b33;
+      --muted: #5c6f8c;
+
+      /* Core brand */
+      --blue: #2457c5;
+      --blue-2: #3f74df;
+      --blue-soft: #dfe9ff;
+
+      /* Lemon accent (used sparingly) */
+      --lemon: #f2d94e;
+      --lemon-strong: #e0c200;
+      --lemon-soft: #fff6b8;
+
+      --line: rgba(16,35,63,.10);
+      --shadow: 0 14px 34px rgba(33,72,149,.10);
+      --radius: 16px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(63,116,223,.08), transparent 34%),
+        linear-gradient(180deg, #f7faff 0%, #ffffff 45%, #f1f6ff 100%);
+      color: var(--text);
+      line-height: 1.68;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    .section { padding: 88px 0; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--blue);
+      background: var(--lemon-soft);
+      border: 1px solid rgba(224,194,0,.25);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--blue);
+    }
+    .grid { display: grid; gap: 24px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 12px;
+      padding: 14px 20px;
+      font-weight: 700;
+      transition: .25s ease;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    .btn-primary {
+      color: #0a1b33;
+      background: linear-gradient(135deg, var(--lemon), var(--lemon-strong));
+      box-shadow: 0 8px 24px rgba(224,194,0,.25);
+      font-weight: 800;
+    }
+    .btn-primary:hover { transform: translateY(-2px); }
+    .btn-primary:hover { transform: translateY(-2px); }
+    .btn-secondary {
+      border-color: rgba(16,35,63,.12);
+      background: #fff;
+      color: var(--heading);
+    }
+    .btn-secondary:hover { background: #f7faff; }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .card-pad { padding: 28px; }
+    .muted { color: var(--muted); }
+    .center { text-align: center; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.88);
+      border-bottom: 1px solid rgba(16,35,63,.08);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 78px;
+      gap: 24px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 800;
+      color: var(--heading);
+      letter-spacing: .01em;
+    }
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      color: #0a1b33;
+      background: linear-gradient(135deg, var(--lemon), var(--lemon-strong));
+      box-shadow: 0 6px 18px rgba(224,194,0,.30);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .nav-links a:hover { color: var(--heading); }
+    .nav-cta { display: flex; align-items: center; gap: 12px; }
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: 0;
+      color: var(--heading);
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    .hero {
+      padding: 86px 0 54px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 34px;
+      align-items: center;
+    }
+    .hero h1 {
+      font-size: clamp(2.7rem, 5vw, 4.6rem);
+      line-height: 1.04;
+      margin: 18px 0 18px;
+      letter-spacing: -0.045em;
+      color: var(--heading);
+      max-width: 760px;
+    }
+    .hero p.lead {
+      font-size: 1.13rem;
+      color: var(--muted);
+      max-width: 700px;
+      margin-bottom: 28px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+    .hero-proof {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .hero-proof span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero-proof span::before {
+      content: "🍋";
+      font-weight: 900;
+    }
+
+    .hero-visual {
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, #ffffff, #f5f9ff);
+    }
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      inset: auto -60px -90px auto;
+      width: 240px;
+      height: 240px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(63,116,223,.10), transparent 65%);
+      pointer-events: none;
+    }
+    .book-stack {
+      display: grid;
+      gap: 18px;
+    }
+    .book {
+      background: linear-gradient(180deg, #ffffff, #f6f9ff);
+      border: 1px solid rgba(16,35,63,.08);
+      border-radius: 18px;
+      padding: 26px;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .book small { color: var(--blue); text-transform: uppercase; letter-spacing: .1em; font-weight: 800; }
+    .book h3 { margin: 10px 0 8px; font-size: 1.6rem; line-height: 1.16; color: var(--heading); }
+    .book p { color: var(--muted); margin: 0; }
+    .mini-stats {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 14px;
+    }
+    .stat {
+      padding: 16px;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid var(--line);
+      text-align: center;
+    }
+    .stat strong {
+      display: block;
+      font-size: 1.45rem;
+      color: var(--blue);
+      margin-bottom: 4px;
+    }
+    .stat span { color: var(--muted); font-size: 14px; }
+
+    .logo-strip { padding: 22px 0 10px; }
+    .logo-row {
+      display: grid;
+      grid-template-columns: repeat(5,1fr);
+      gap: 14px;
+    }
+    .logo-pill {
+      text-align: center;
+      padding: 18px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, #ffffff, #f8fbff);
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin: 14px 0 14px;
+      line-height: 1.1;
+      letter-spacing: -0.035em;
+      color: var(--heading);
+    }
+    .section-copy {
+      color: var(--muted);
+      max-width: 760px;
+      margin: 0 auto;
+      font-size: 1.06rem;
+    }
+
+    .features {
+      grid-template-columns: repeat(3,1fr);
+      margin-top: 44px;
+    }
+    .feature h3 { margin: 0 0 10px; font-size: 1.2rem; color: var(--heading); }
+    .feature p { margin: 0; color: var(--muted); }
+    .icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: rgba(36,87,197,.10);
+      color: var(--blue);
+      font-size: 20px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(36,87,197,.15);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: .98fr 1.02fr;
+      gap: 30px;
+      align-items: start;
+    }
+    .list-check {
+      display: grid;
+      gap: 14px;
+      margin-top: 24px;
+      padding-left: 0;
+    }
+    .list-check li {
+      list-style: none;
+      display: flex;
+      gap: 12px;
+      color: var(--muted);
+    }
+    .list-check li::before {
+      content: "✓";
+      width: 24px;
+      height: 24px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 999px;
+      background: rgba(36,87,197,.10);
+      color: var(--blue);
+      font-weight: 900;
+      flex: 0 0 24px;
+      margin-top: 2px;
+    }
+    .pricing-box {
+      padding: 30px;
+      position: sticky;
+      top: 100px;
+      background: linear-gradient(180deg, #ffffff, #f7faff);
+    }
+    .price {
+      font-size: 3rem;
+      line-height: 1;
+      margin: 10px 0 14px;
+      font-weight: 900;
+      letter-spacing: -.04em;
+      color: var(--heading);
+    }
+    .price small {
+      font-size: 1rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .bundle-items {
+      display: grid;
+      gap: 12px;
+      margin: 24px 0;
+    }
+    .bundle-items div {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      color: var(--muted);
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .bundle-items strong { color: var(--heading); }
+
+    .audience {
+      grid-template-columns: repeat(4,1fr);
+      margin-top: 40px;
+    }
+    .audience .card { text-align: left; }
+    .audience h3 { margin: 0 0 10px; font-size: 1.1rem; color: var(--heading); }
+    .audience p { margin: 0; color: var(--muted); font-size: 15px; }
+
+    .steps {
+      grid-template-columns: repeat(4,1fr);
+      margin-top: 40px;
+    }
+    .step-num {
+      display: inline-grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--blue), var(--blue-2));
+      color: #fff;
+      font-weight: 900;
+      margin-bottom: 16px;
+      border: 2px solid var(--lemon);
+    }
+
+    .curriculum {
+      grid-template-columns: repeat(2,1fr);
+      margin-top: 40px;
+    }
+    .curriculum h3 { color: var(--heading); }
+    .curriculum ul { padding-left: 20px; color: var(--muted); margin: 0; }
+    .curriculum li + li { margin-top: 8px; }
+
+    .testimonial-wrap {
+      grid-template-columns: 1fr 1fr;
+      margin-top: 36px;
+    }
+    blockquote {
+      margin: 0;
+      font-size: 1.05rem;
+      color: var(--heading);
+      line-height: 1.75;
+    }
+    .quote-by {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .faq {
+      max-width: 880px;
+      margin: 42px auto 0;
+      display: grid;
+      gap: 16px;
+    }
+    details {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+      padding: 18px 20px;
+    }
+    summary {
+      cursor: pointer;
+      font-weight: 700;
+      list-style: none;
+      position: relative;
+      padding-right: 30px;
+      color: var(--heading);
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: "+";
+      position: absolute;
+      right: 0;
+      top: -2px;
+      font-size: 1.4rem;
+      color: var(--blue);
+    }
+    details[open] summary::after { content: "−"; }
+    details p { color: var(--muted); margin: 14px 0 0; }
+
+    .cta-band {
+      padding: 38px;
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 28px;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(180deg, #ffffff, #f5f9ff);
+    }
+    .cta-band::before {
+      content: "";
+      position: absolute;
+      inset: -30% auto auto -10%;
+      width: 320px;
+      height: 320px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(63,116,223,.10), transparent 60%);
+      pointer-events: none;
+    }
+    form {
+      display: grid;
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    input, select, textarea {
+      width: 100%;
+      background: #fff;
+      border: 1px solid rgba(16,35,63,.12);
+      color: var(--heading);
+      border-radius: 12px;
+      padding: 14px 14px;
+      font: inherit;
+    }
+    input::placeholder, textarea::placeholder { color: #7083a2; }
+    textarea { min-height: 120px; resize: vertical; }
+
+    footer {
+      padding: 34px 0 48px;
+      border-top: 1px solid rgba(16,35,63,.08);
+      color: var(--muted);
+      background: #fff;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: start;
+    }
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      font-weight: 600;
+    }
+    .footer-links a:hover { color: var(--heading); }
+
+    @media (max-width: 1040px) {
+      .hero-grid,
+      .split,
+      .cta-band,
+      .features,
+      .audience,
+      .steps,
+      .curriculum,
+      .testimonial-wrap {
+        grid-template-columns: 1fr 1fr;
+      }
+      .logo-row { grid-template-columns: repeat(3,1fr); }
+      .pricing-box { position: static; }
+    }
+
+    @media (max-width: 760px) {
+      .nav-links,
+      .nav-cta .btn-secondary,
+      .nav-cta .btn-primary {
+        display: none;
+      }
+      .menu-toggle { display: block; }
+      .mobile-menu {
+        display: none;
+        padding: 0 0 18px;
+      }
+      .mobile-menu.open {
+        display: grid;
+        gap: 10px;
+      }
+      .mobile-menu a {
+        color: var(--muted);
+        padding: 10px 0;
+        border-top: 1px solid rgba(16,35,63,.08);
+        font-weight: 600;
+      }
+      .hero,
+      .section { padding: 66px 0; }
+      .hero-grid,
+      .split,
+      .features,
+      .audience,
+      .steps,
+      .curriculum,
+      .testimonial-wrap,
+      .cta-band,
+      .logo-row,
+      .form-row,
+      .footer-grid,
+      .mini-stats {
+        grid-template-columns: 1fr;
+      }
+      .hero h1 { font-size: clamp(2.2rem, 12vw, 3.2rem); }
+      .card-pad, .pricing-box, .cta-band { padding: 22px; }
+      .footer-links { justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav class="nav">
+        <a href="#top" class="brand">
+          <span class="brand-mark">🍋</span>
+          <span>The 5 Lemons</span>
+        </a>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#author">Author</a>
+          <a href="#audiences">Audiences</a>
+          <a href="#programs">Programs</a>
+          <a href="#schools">Schools</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="nav-cta">
+          <a class="btn btn-secondary" href="#curriculum">View Program</a>
+          <a class="btn btn-primary" href="#contact">Get the Bundle</a>
+        </div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+      </nav>
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="#about">About</a>
+        <a href="#author">Author</a>
+        <a href="#audiences">Audiences</a>
+        <a href="#programs">Programs</a>
+        <a href="#schools">Schools</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">🍋 Main Street M&amp;A education platform</span>
+          <h1>The 5 Lemons 🍋</h1>
+          <p style="font-size:clamp(1rem,1.6vw,1.25rem); margin:0 0 6px; color:var(--blue); font-weight:800; letter-spacing:-0.01em;">A CPA&rsquo;s Field Guide to Buying Businesses, SBA Acquisitions &amp; Main Street M&amp;A</p>
+          <h2 style="font-size:clamp(1.15rem,2vw,1.6rem); margin-top:4px; margin-bottom:16px; color:var(--muted); font-weight:700; letter-spacing:-0.02em;">For entrepreneurs, students, professionals, and schools</h2>
+          <div style="display:inline-flex; align-items:center; gap:10px; background:var(--lemon-soft); border:1px solid rgba(224,194,0,.3); border-radius:12px; padding:10px 16px; margin-bottom:18px; font-size:14px; color:var(--heading);">
+            <span style="font-size:18px;">📊</span>
+            <span><strong>Generation X now owns the majority of U.S. privately-held businesses.</strong> 49% plan to exit within five years &mdash; without a transition plan or advisory team. That is the market this book was written for.</span>
+          </div>
+          <p class="lead">
+            The 5 Lemons brings together an 18-chapter practitioner book, a 10-module companion workbook, a 50-question certification test, and a plug-and-play 10-week course curriculum &mdash; all built around one clear framework for evaluating, structuring, and closing Main Street acquisitions.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#programs">Explore Programs</a>
+            <a class="btn btn-secondary" href="#author">Meet the Author</a>
+          </div>
+          <div class="hero-proof">
+            <span>18 chapters &bull; real deal examples</span>
+            <span>10-week course syllabus included</span>
+            <span>50-question certification test + answer key</span>
+          </div>
+        </div>
+
+        <div class="hero-visual card">
+          <div class="book-stack">
+            <div class="book">
+              <div>
+                <small>🍋 Core framework</small>
+                <h3>5 Lemons: M&amp;A Advisory</h3>
+                <p style="font-size:13px; color:var(--blue); font-weight:700; margin:4px 0 8px;">A CPA&rsquo;s Field Guide to Buying Businesses, SBA Acquisitions &amp; Main Street M&amp;A</p>
+                <p>18 chapters. 5 real deal case studies. QofE methodology, SBA structuring, negotiation judgment, and integration playbook &mdash; written by a practitioner still doing the work.</p>
+              </div>
+              <div class="muted">Publishing • instruction • application</div>
+            </div>
+            <div class="book">
+              <div>
+                <small>🍋 Platform use cases</small>
+                <h3>Courses, training, and adoption</h3>
+                <p>Structured for self-study, classroom learning, executive education, firm training, and future certification pathways.</p>
+              </div>
+              <div class="muted">Curriculum • workshops • institutional use</div>
+            </div>
+            <div class="mini-stats">
+              <div class="stat"><strong>18</strong><span>Chapters</span></div>
+              <div class="stat"><strong>10</strong><span>Workbook modules</span></div>
+              <div class="stat"><strong>50</strong><span>Question test bank</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container logo-strip">
+        <div class="logo-row">
+          <div class="logo-pill">🍋 Entrepreneurs</div>
+          <div class="logo-pill">🍋 Students</div>
+          <div class="logo-pill">🍋 Professionals</div>
+          <div class="logo-pill">🍋 Schools</div>
+          <div class="logo-pill">🍋 Executive Education</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section center" id="about">
+      <div class="container">
+        <span class="eyebrow">About the platform</span>
+        <h2>What The 5 Lemons is</h2>
+        <p class="section-copy">
+          The 5 Lemons is a practical educational platform built around Main Street M&amp;A. It is designed to serve people who want to acquire businesses, teach acquisition thinking, strengthen professional judgment, or bring modern ownership education into a structured learning environment.
+        </p>
+
+        <div class="grid features">
+          <div class="card card-pad feature">
+            <div class="icon">◈</div>
+            <h3>The 5 Lemons Framework</h3>
+            <p>A fast-screening tool that categorizes any acquisition target by risk type: the Attractive Lemon, the Overvalued Lemon, the Rotten Lemon, the Hard-to-Integrate Lemon, and the Unwanted Lemon. Screen faster. Negotiate sharper. Walk away sooner.</p>
+          </div>
+          <div class="card card-pad feature">
+            <div class="icon">⌁</div>
+            <h3>Applied learning</h3>
+            <p>Workbook exercises, case-based thinking, and structured modules help learners move from theory into practical use.</p>
+          </div>
+          <div class="card card-pad feature">
+            <div class="icon">▣</div>
+            <h3>Flexible adoption</h3>
+            <p>Designed for individuals, classrooms, workshops, firms, and institutions that want practical M&amp;A education.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="author">
+      <div class="container split">
+        <div>
+          <span class="eyebrow">🍋 Author</span>
+          <h2>About David Hernandez, CPA</h2>
+          <p class="muted" style="font-size:1.06rem;">
+            David Hernandez, CPA, known professionally as Max L’Entrepreneur, is the founder behind The 5 Lemons and a practitioner in Main Street M&amp;A, business valuation, due diligence, restructuring, and strategic advisory.
+          </p>
+          <p class="muted">
+            His professional background combines accounting rigor, entrepreneurial perspective, and real-world transaction experience. That combination shapes the platform’s focus on practical judgment, disciplined evaluation, and education that can be used outside the classroom as well as within it.
+          </p>
+          <p class="muted">
+            The 5 Lemons reflects his broader mission: helping entrepreneurs, students, professionals, and schools access a clearer, more usable model for thinking about business acquisition and ownership.
+          </p>
+          <ul class="list-check">
+            <li><span><strong>Professional focus</strong><br />Main Street M&amp;A, business valuation, due diligence, restructuring, and strategic advisory.</span></li>
+            <li><span><strong>Educational focus</strong><br />Practical acquisition education for classrooms, professional learning, and owner-operator decision making.</span></li>
+            <li><span><strong>Platform vision</strong><br />A modern blend of publishing, curriculum, training, and applied business education.</span></li>
+          </ul>
+        </div>
+
+        <aside class="card pricing-box" style="position:static;">
+          <div class="eyebrow">🍋 Author profile</div>
+          <div style="padding-top:6px;">
+            <h3 style="margin:0 0 8px; color:var(--heading); font-size:1.4rem;">David Hernandez, CPA</h3>
+            <p class="muted" style="margin:0 0 16px;">Author • Educator • Advisor • Entrepreneur</p>
+          </div>
+          <div class="bundle-items">
+            <div><span>Credential</span><strong>The Accredited Investor CPA</strong></div>
+            <div><span>License</span><strong>Florida CPA &mdash; AC38148</strong></div>
+            <div><span>Organization</span><strong>Brickell CPA, Inc. / Max Financial Group</strong></div>
+            <div><span>SBA experience</span><strong>$60M+ in facilitated acquisitions</strong></div>
+            <div><span>Teaching</span><strong>FIU &bull; MDC &bull; Millennia Atlantic</strong></div>
+          </div>
+          <a class="btn btn-primary" style="width:100%;" href="#contact">Invite or Inquire</a>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section center" id="audiences">
+      <div class="container">
+        <span class="eyebrow">🍋 Audiences</span>
+        <h2>Who the platform serves</h2>
+        <p class="section-copy">Each audience comes with a different goal. The website should make those paths easy to understand while preserving one strong brand and one repeatable framework.</p>
+
+        <div class="grid audience">
+          <div class="card card-pad">
+            <h3>Entrepreneurs</h3>
+            <p>Learn how to evaluate opportunities, identify red flags, and approach acquisitions with greater discipline before committing capital.</p>
+          </div>
+          <div class="card card-pad">
+            <h3>Students</h3>
+            <p>Move from abstract theory to practical ownership education through case analysis, worksheets, and applied acquisition thinking.</p>
+          </div>
+          <div class="card card-pad">
+            <h3>Professionals</h3>
+            <p>Strengthen advisory, CPA, consulting, and financial education capabilities with a framework that supports better client conversations and sharper judgment.</p>
+          </div>
+          <div class="card card-pad">
+            <h3>Schools</h3>
+            <p>Adopt a teaching-ready structure for entrepreneurship, finance, accounting, executive education, or business ownership programs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="programs">
+      <div class="container split">
+        <div>
+          <span class="eyebrow">🍋 Programs</span>
+          <h2>How the platform can be used</h2>
+          <p class="muted">
+            The 5 Lemons is designed to support multiple use cases without fragmenting the experience. It can work as a self-study resource, a classroom tool, a workshop framework, or a professional development pathway.
+          </p>
+          <ul class="list-check">
+            <li><span><strong>Self-study path</strong><br />For entrepreneurs and professionals learning directly from the book, workbook, and practical tools.</span></li>
+            <li><span><strong>Course path</strong><br />For instructors and programs seeking a structured sequence of lessons, exercises, and applied assignments.</span></li>
+            <li><span><strong>Workshop path</strong><br />For executive education, firm training, and guided group learning.</span></li>
+            <li><span><strong>Future expansion path</strong><br />For certification, advanced learning, and advisory engagement.</span></li>
+          </ul>
+        </div>
+
+        <aside class="card pricing-box">
+          <div class="eyebrow">Institutional pricing</div>
+          <div class="price">$39 <small>/ student (book)</small></div>
+          <p class="muted" style="margin:0 0 18px;">Professional-grade education at textbook pricing.</p>
+          <div class="bundle-items">
+            <div><span>Book only</span><strong>$29 &ndash; $39 / student</strong></div>
+            <div><span>Full course bundle</span><strong>$59 &ndash; $79 / student</strong></div>
+            <div><span>Premium institution</span><strong>$99 &ndash; $149 / student</strong></div>
+            <div><span>Individual retail</span><strong>$34.99 (book) &bull; $24.99 (workbook)</strong></div>
+            <div><span>Bundle (direct)</span><strong>$54.99 book + workbook</strong></div>
+          </div>
+          <a class="btn btn-primary" style="width:100%;" href="#contact">Request Institutional Pricing</a>
+          <p class="muted" style="margin:14px 0 0; font-size:13px;">Volume discounts available for 100+ students. Instructor copy requests welcome.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section center" id="schools">
+      <div class="container">
+        <span class="eyebrow">🍋 Schools and institutions</span>
+        <h2>Academic and institutional use</h2>
+        <p class="section-copy">The platform is organized so that schools, instructors, and training organizations can quickly see how The 5 Lemons fits into structured learning environments.</p>
+
+        <div class="grid steps">
+          <div class="card card-pad">
+            <div class="step-num">1</div>
+            <h3>Teach the framework</h3>
+            <p class="muted">Introduce students to screening, diligence, valuation judgment, and practical business ownership thinking.</p>
+          </div>
+          <div class="card card-pad">
+            <div class="step-num">2</div>
+            <h3>Use the workbook</h3>
+            <p class="muted">Reinforce learning through exercises, self-assessments, and case analysis.</p>
+          </div>
+          <div class="card card-pad">
+            <div class="step-num">3</div>
+            <h3>Adapt for programs</h3>
+            <p class="muted">Use the modules in entrepreneurship, finance, accounting, continuing education, and executive learning contexts.</p>
+          </div>
+          <div class="card card-pad">
+            <div class="step-num">4</div>
+            <h3>Expand into partnerships</h3>
+            <p class="muted">Support workshops, guest lectures, cohorts, and future certification pathways.</p>
+          </div>
+        </div>
+
+        <div class="grid curriculum">
+          <div class="card card-pad">
+            <h3>For schools and instructors</h3>
+            <ul>
+              <li>Entrepreneurship and business ownership courses</li>
+              <li>Finance and accounting electives</li>
+              <li>Case-based assignments and capstone use</li>
+              <li>Executive education and continuing learning</li>
+              <li>Instructor-led workshops and short programs</li>
+            </ul>
+          </div>
+          <div class="card card-pad">
+            <h3>For professionals and entrepreneurs</h3>
+            <ul>
+              <li>Self-paced acquisition learning</li>
+              <li>Practical deal screening and evaluation</li>
+              <li>Professional development and internal training</li>
+              <li>Workshops, cohorts, and live instruction</li>
+              <li>Future certification and advanced support</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section center" id="faq">
+      <div class="container">
+        <span class="eyebrow">🍋 FAQ</span>
+        <h2>Frequently asked questions</h2>
+        <div class="faq">
+          <details>
+            <summary>Is this website only for people buying a business?</summary>
+            <p>No. It is designed for entrepreneurs, students, professionals, and schools. Some visitors come to acquire businesses, while others come to learn, teach, or train around acquisition thinking.</p>
+          </details>
+          <details>
+            <summary>Can schools or universities adopt this?</summary>
+            <p>Yes. The platform is intentionally structured to support academic use, instructor-led learning, and business education programs.</p>
+          </details>
+          <details>
+            <summary>Can professionals use this for training?</summary>
+            <p>Yes. Advisors, CPAs, consultants, and firms can use the framework for internal development, workshops, and better client-facing acquisition conversations.</p>
+          </details>
+          <details>
+            <summary>Is there room for future certification and programs?</summary>
+            <p>Yes. The Certified Acquisition Entrepreneur (CAE) designation is in development. Completion of the 10-module workbook and a passing score on the 50-question test is the current pathway. A LinkedIn-shareable certificate of completion is issued upon passing.</p>
+          </details>
+          <details>
+            <summary>What makes this different from other M&amp;A books?</summary>
+            <p>Most M&amp;A books target Wall Street deals. This one targets Main Street: businesses with $500K&ndash;$20M in revenue, SBA-financed acquisitions, owner-operator transitions, and immigrant entrepreneurship. The author is an active practitioner who has facilitated over $60 million in SBA-financed acquisitions &mdash; not a professor writing about deals. Every case study is real. Every number is sourced.</p>
+          </details>
+          <details>
+            <summary>How do I engage Brickell CPA as my M&amp;A advisor?</summary>
+            <p>Contact the office directly: <a href="tel:+13057078007" style="color:var(--blue); font-weight:700;">(305) 707-8007</a> or <a href="mailto:max@brickellcpa.com" style="color:var(--blue); font-weight:700;">max@brickellcpa.com</a>. We work on a retained engagement basis with a defined scope and deliverables. We do not offer free assessments &mdash; a position we hold because we believe that free advice is sometimes more expensive than zero advice.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="card cta-band">
+          <div>
+            <span class="eyebrow">🍋 Engage Brickell CPA</span>
+            <h2 style="margin-top:16px;">Ready to work with a real M&amp;A advisor?</h2>
+            <div style="background:var(--lemon-soft); border:1px solid rgba(224,194,0,.3); border-radius:12px; padding:14px 18px; margin-bottom:18px;">
+              <p style="margin:0; font-weight:800; color:var(--heading); font-size:1.05rem;">&ldquo;Free advice is sometimes more expensive than zero advice.&rdquo;</p>
+              <p style="margin:8px 0 0; font-size:14px; color:var(--muted);">We work on a retained basis with defined scope and documented deliverables. Contact our office to discuss a formal engagement.</p>
+            </div>
+            <ul class="list-check" style="margin-bottom:18px;">
+              <li><span>Lead buy-side M&amp;A advisor &mdash; from target screening through closing</span></li>
+              <li><span>Second opinion on a deal in progress</span></li>
+              <li><span>Quality of Earnings review, valuation, or deal structuring</span></li>
+              <li><span>Academic adoption &amp; institutional partnerships</span></li>
+              <li><span>Post-acquisition integration &amp; first-100-days CFO support</span></li>
+            </ul>
+            <div style="display:grid; gap:8px; font-size:15px; color:var(--heading);">
+              <div><strong>📞</strong> <a href="tel:+13057078007" style="color:var(--blue); font-weight:700;">(305) 707-8007</a></div>
+              <div><strong>✉</strong> <a href="mailto:max@brickellcpa.com" style="color:var(--blue); font-weight:700;">max@brickellcpa.com</a></div>
+              <div><strong>🏢</strong> <span style="color:var(--muted);">150 SE 2nd Ave., Suite 205 &bull; Brickell Financial District &bull; Miami, FL 33131</span></div>
+              <div><strong>🌐</strong> <a href="https://www.brickellcpa.com" style="color:var(--blue); font-weight:700;">www.brickellcpa.com</a></div>
+            </div>
+          </div>
+          <div>
+            <form>
+              <div class="form-row">
+                <input type="text" name="first_name" placeholder="First name" />
+                <input type="text" name="last_name" placeholder="Last name" />
+              </div>
+              <div class="form-row">
+                <input type="email" name="email" placeholder="Email address" />
+                <select name="interest">
+                  <option value="">I represent…</option>
+                  <option>An entrepreneur</option>
+                  <option>A student</option>
+                  <option>A professional or firm</option>
+                  <option>A school or university</option>
+                  <option>An executive education group</option>
+                </select>
+              </div>
+              <textarea name="message" placeholder="Tell us about your deal, your institution, or the engagement you have in mind. We will respond within one business day."></textarea>
+              <button class="btn btn-primary" type="submit">Contact Our Office</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+  <div class="container footer-grid">
+    <div>
+      <strong style="display:block; color:var(--text); margin-bottom:2px;">The 5 Lemons 🍋</strong>
+      <span style="display:block; font-size:13px; color:var(--blue); font-weight:700; margin-bottom:4px;">A CPA&rsquo;s Field Guide to Buying Businesses, SBA Acquisitions &amp; Main Street M&amp;A</span>
+      <span>David &ldquo;Max&rdquo; Hernandez, CPA &mdash; The Accredited Investor CPA<br/>Brickell CPA, Inc. &bull; <a href="tel:+13057078007" style="color:var(--blue);">(305) 707-8007</a> &bull; <a href="mailto:max@brickellcpa.com" style="color:var(--blue);">max@brickellcpa.com</a></span>
+      <p style="margin-top:14px; font-size:13px; line-height:1.5; color:#8ea0bd;">
+        <strong>Disclaimer:</strong> The information provided on this website, including the book, workbook, and related materials, is for educational and informational purposes only. It does not constitute legal, tax, investment, or financial advice. No client relationship is formed by accessing or using this content. Users should consult with qualified professionals before making any business, financial, or investment decisions.
+      </p>
+      <p style="margin-top:10px; font-size:13px; line-height:1.5; color:#8ea0bd;">
+        All examples, case studies, and scenarios are illustrative and may not reflect actual transactions. Past performance and illustrative outcomes are not indicative of future results.
+      </p>
+      <p style="margin-top:10px; font-size:13px; line-height:1.5; color:#8ea0bd;">
+        © 2026 David Hernandez, CPA · Brickell CPA, Inc. d/b/a Max Financial Group. All rights reserved. Unauthorized reproduction, distribution, or use of this material without written permission is strictly prohibited.
+      </p>
+    </div>
+    <div class="footer-links">
+      <a href="#top">Top</a>
+      <a href="#about">About</a>
+      <a href="#author">Author</a>
+      <a href="#audiences">Audiences</a>
+      <a href="#programs">Programs</a>
+      <a href="#schools">Schools</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+
+    document.querySelector('form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert('Thanks! Connect this form to your email platform, CRM, or checkout flow.');
+    });
+  </script>
+</body>
+</html>
